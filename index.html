@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Garage — MOT • Servicing • Tyres</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=IBM+Plex+Mono:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Colors */
+      --color-warm-white: #f0eeeb;
+      --color-off-black: #292827;
+      --color-true-black: #000000;
+      --color-graphite: #393837;
+      --color-light-gray: #d6d3ce;
+      --color-bright-white: #ffffff;
+      --color-middle-gray: #938f89;
+      --color-pale-steel: #c2bfba;
+
+      /* Typography */
+      --font-diatype: 'Inter', sans-serif;
+      --font-diatype-mono: 'IBM Plex Mono', monospace;
+
+      /* Spacing */
+      --spacing-10: 10px;
+      --spacing-12: 12px;
+      --spacing-18: 18px;
+      --spacing-30: 30px;
+      --spacing-50: 50px;
+      --spacing-55: 55px;
+      --spacing-88: 88px;
+      --spacing-100: 100px;
+      --spacing-150: 150px;
+
+      /* Border Radius */
+      --radius-md: 6px;
+      --radius-xl: 12px;
+      --radius-3xl: 24px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-diatype);
+      background: var(--color-warm-white);
+      color: var(--color-off-black);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-30);
+    }
+
+    /* === FLOATING NAVIGATION === */
+    .nav-wrapper {
+      position: fixed;
+      top: var(--spacing-18);
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav {
+      background: rgba(232, 227, 216, 0.7);
+      backdrop-filter: blur(57px);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-12) var(--spacing-18);
+      display: flex;
+      gap: var(--spacing-30);
+      align-items: center;
+    }
+
+    nav a {
+      font-family: var(--font-diatype);
+      font-size: 14px;
+      color: var(--color-off-black);
+      text-decoration: none;
+      letter-spacing: -0.14px;
+      transition: opacity 0.2s;
+    }
+
+    nav a:hover {
+      opacity: 0.6;
+    }
+
+    .nav-btn {
+      background: var(--color-off-black);
+      color: var(--color-warm-white);
+      font-family: var(--font-diatype-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.72px;
+      padding: 6px 14px;
+      border-radius: var(--radius-md);
+      border: none;
+      cursor: pointer;
+    }
+
+    /* === HERO — Dark Media Stage === */
+    .hero {
+      background: var(--color-true-black);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: var(--spacing-150) var(--spacing-50) var(--spacing-100);
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-diatype-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.96px;
+      text-transform: uppercase;
+      color: var(--color-warm-white);
+      margin-bottom: var(--spacing-18);
+    }
+
+    .hero h1 {
+      font-family: var(--font-diatype);
+      font-size: 62px;
+      font-weight: 400;
+      line-height: 0.93;
+      letter-spacing: -1.86px;
+      color: var(--color-warm-white);
+      max-width: 900px;
+      margin-bottom: var(--spacing-50);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: var(--spacing-18);
+    }
+
+    .btn-warm {
+      background: var(--color-warm-white);
+      color: var(--color-off-black);
+      font-family: var(--font-diatype-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.72px;
+      padding: 13px 15px;
+      border-radius: var(--radius-md);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--color-warm-white);
+      font-family: var(--font-diatype-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.72px;
+      padding: 13px 15px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-warm-white);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    /* === SECTION BASE === */
+    section {
+      padding: var(--spacing-100) 0;
+    }
+
+    .section-row {
+      display: flex;
+      gap: var(--spacing-30);
+    }
+
+    .section-eyebrow {
+      flex: 0 0 180px;
+      font-family: var(--font-diatype-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.72px;
+      text-transform: uppercase;
+      color: var(--color-off-black);
+      opacity: 0.6;
+      padding-top: 4px;
+    }
+
+    .section-content {
+      flex: 1;
+    }
+
+    .section-content h2 {
+      font-family: var(--font-diatype);
+      font-size: 36px;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -1.08px;
+      color: var(--color-off-black);
+      margin-bottom: var(--spacing-50);
+      max-width: 720px;
+    }
+
+    /* === UTILITY CARDS === */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-18);
+    }
+
+    .utility-card {
+      background: var(--color-light-gray);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-88) var(--spacing-18) var(--spacing-18);
+      position: relative;
+    }
+
+    .card-number {
+      position: absolute;
+      top: var(--spacing-18);
+      right: var(--spacing-18);
+      font-family: var(--font-diatype-mono);
+      font-size: 12px;
+      color: var(--color-middle-gray);
+    }
+
+    .utility-card h3 {
+      font-family: var(--font-diatype);
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.56px;
+      color: var(--color-off-black);
+      margin-bottom: var(--spacing-12);
+    }
+
+    .utility-card p {
+      font-size: 15px;
+      color: var(--color-off-black);
+      opacity: 0.7;
+      margin-bottom: var(--spacing-12);
+    }
+
+    .card-price {
+      font-family: var(--font-diatype-mono);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.72px;
+      color: var(--color-off-black);
+      display: inline-block;
+      border-top: 1px solid var(--color-pale-steel);
+      padding-top: var(--spacing-12);
+      margin-top: var(--spacing-12);
+    }
+
+    /* === GRAPHITE PILL PANELS === */
+    .panels-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-18);
+    }
+
+    .graphite-panel {
+      background: var(--color-graphite);
+      border: 1px solid var(--color-warm-white);
+      border-radius: var(--radius-3xl);
+      padding: var(--spacing-30);
+      color: var(--color-warm-white);
+      transition: transform 0.2s ease;
+    }
+
+    .graphite-panel:hover {
+      transform: translateY(-2px);
+    }
+
+    .graphite-panel h3 {
+      font-family: var(--font-diatype);
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: var(--spacing-12);
+    }
+
+    .graphite-panel p {
+      font-size: 15px;
+      opacity: 0.8;
+      margin-bottom: var(--spacing-18);
+    }
+
+    .graphite-panel .panel-label {
+      font-family: var(--font-diatype-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.96px;
+      opacity: 0.5;
+    }
+
+    /* === ABOUT IMAGE CARD === */
+    .image-card {
+      background: var(--color-bright-white);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 360px;
+    }
+
+    .image-placeholder {
+      background: var(--color-light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-diatype-mono);
+      font-size: 12px;
+      color: var(--color-middle-gray);
+    }
+
+    .image-card-content {
+      padding: var(--spacing-50);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .image-card-content h3 {
+      font-family: var(--font-diatype);
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: -0.56px;
+      margin-bottom: var(--spacing-18);
+    }
+
+    .image-card-content p {
+      font-size: 15px;
+      color: var(--color-off-black);
+      opacity: 0.7;
+      margin-bottom: var(--spacing-12);
+    }
+
+    /* === FOOTER === */
+    footer {
+      background: var(--color-off-black);
+      color: var(--color-warm-white);
+      padding: var(--spacing-100) 0 var(--spacing-50);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--spacing-50);
+      margin-bottom: var(--spacing-50);
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-diatype-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.72px;
+      opacity: 0.5;
+      margin-bottom: var(--spacing-18);
+    }
+
+    .footer-col a,
+    .footer-col p {
+      font-size: 14px;
+      color: var(--color-warm-white);
+      opacity: 0.7;
+      text-decoration: none;
+      display: block;
+      margin-bottom: var(--spacing-10);
+    }
+
+    .footer-col a:hover {
+      opacity: 1;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--color-middle-gray);
+      padding-top: var(--spacing-30);
+      font-size: 12px;
+      color: var(--color-middle-gray);
+    }
+
+    /* === MOBILE === */
+    @media (max-width: 900px) {
+      .hero h1 { font-size: 36px; }
+      .section-row { flex-direction: column; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .panels-grid { grid-template-columns: 1fr; }
+      .image-card { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      nav { gap: var(--spacing-12); padding: var(--spacing-10); }
+      nav a:nth-child(2), nav a:nth-child(3) { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-buttons { flex-direction: column; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 🔹 FLOATING NAVIGATION -->
+<div class="nav-wrapper">
+  <nav>
+    <a href="#">YOUR GARAGE</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#book" class="nav-btn">BOOK →</a>
+  </nav>
+</div>
+
+<!-- 🖼 HERO — Dark Media Stage -->
+<section class="hero">
+  <p class="hero-eyebrow">Independent MOT & Service Centre — Est. 2012</p>
+  <h1>Precision, transparency, and care — engineered into every service we perform.</h1>
+  <div class="hero-buttons">
+    <a href="#book" class="btn-warm">Book Your Visit</a>
+    <a href="#services" class="btn-outline">View Services</a>
+  </div>
+</section>
+
+<!-- 🔹 SERVICES — Utility Cards -->
+<section id="services">
+  <div class="container">
+    <div class="section-row">
+      <div class="section-eyebrow">What We Do</div>
+      <div class="section-content">
+        <h2>Everything your car needs — all under one roof, priced clearly.</h2>
+        <div class="cards-grid">
+          <div class="utility-card">
+            <span class="card-number">01</span>
+            <h3>MOT Testing</h3>
+            <p>DVSA-approved test centre. Comprehensive inspection with a clear report. We advise — never pressure you.</p>
+            <span class="card-price">From £55</span>
+          </div>
+          <div class="utility-card">
+            <span class="card-number">02</span>
+            <h3>Full Service</h3>
+            <p>Manufacturer schedule followed exactly. Service book stamped. Your warranty stays fully protected.</p>
+            <span class="card-price">From £149</span>
+          </div>
+          <div class="utility-card">
+            <span class="card-number">03</span>
+            <h3>Tyres & Fitting</h3>
+            <p>Budget to premium brands. Supplied, fitted, balanced and disposed of responsibly. Free safety checks.</p>
+            <span class="card-price">From £60 each</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 BOOKING — Graphite Panels -->
+<section id="book">
+  <div class="container">
+    <div class="section-row">
+      <div class="section-eyebrow">Make A Start</div>
+      <div class="section-content">
+        <h2>Choose what works for you.</h2>
+        <div class="panels-grid">
+          <div class="graphite-panel">
+            <p class="panel-label">Option 01</p>
+            <h3>Call Us Direct</h3>
+            <p>Speak with our team immediately. We can often fit you in within 48 hours.</p>
+            <strong>020 8543 1234</strong>
+          </div>
+          <div class="graphite-panel">
+            <p class="panel-label">Option 02</p>
+            <h3>Request Online</h3>
+            <p>Fill in your details and we'll confirm your slot within 2 hours during business hours.</p>
+            <strong>hello@yourgarage.co.uk</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 ABOUT — Image Card -->
+<section id="about">
+  <div class="container">
+    <div class="section-row">
+      <div class="section-eyebrow">Who We Are</div>
+      <div class="section-content">
+        <h2>Skilled technicians. No corporate overhead. Just honest work.</h2>
+        <div class="image-card">
+          <div class="image-placeholder">Garage photo here</div>
+          <div class="image-card-content">
+            <h3>Established in Morden since 2012</h3>
+            <p>We're not a national chain — just qualified mechanics who believe trust matters most. You'll always know what we're doing, why it's needed, and what it costs before we start.</p>
+            <p>DVSA Approved Test Station • IAAF Member • Fully Insured</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-row">
+      <div class="section-eyebrow">Find Us</div>
+      <div class="section-content">
+        <h2>Conveniently located for Morden, Wimbledon, and South West London.</h2>
+        <div class="cards-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="utility-card" style="padding: var(--spacing-18);">
+            <span class="card-number">📍</span>
+            <h3 style="font-size: 19px;">Address</h3>
+            <p>12 Garfield Road<br>Morden<br>London<br>SM4 5AB</p>
+          </div>
+          <div class="utility-card" style="padding: var(--spacing-18);">
+            <span class="card-number">🕐</span>
+            <h3 style="font-size: 19px;">Hours</h3>
+            <p>Mon–Fri: 08:30–17:30<br>Sat: 08:30–13:00<br>Sun: Closed</p>
+          </div>
+          <div class="utility-card" style="padding: var(--spacing-18);">
+            <span class="card-number">📞</span>
+            <h3 style="font-size: 19px;">Contact</h3>
+            <p>Tel: 020 8543 1234<br>Email: hello@yourgarage.co.uk</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Your Garage</h4>
+        <p>Independent MOT & Service Centre<br>Serving Morden since 2012</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#">MOT Testing</a>
+        <a href="#">Servicing</a>
+        <a href="#">Tyres</a>
+        <a href="#">Repairs</a>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="#about">About Us</a>
+        <a href="#contact">Get Directions</a>
+        <a href="#book">Book Now</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Your Garage. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
